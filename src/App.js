@@ -19,8 +19,9 @@ function App() {
 
   useEffect(() => {
     //Reading the data from database and appending it to message array
+
     db.collection("messages")
-      .orderBy("timestamp", "desc")
+      .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
         setMessages(
           snapshot.docs.map((doc) => ({
@@ -40,9 +41,10 @@ function App() {
       username: username,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
-
+    // window.scrollTo(0, 999999999999);
     // setMessages([...messages, { message: input, username: username }]);
     setInput("");
+    window.scrollTo(0, 999999999999);
   };
 
   return (
